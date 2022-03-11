@@ -2,6 +2,7 @@ package com.example.copia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.room.Transaction
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -9,37 +10,55 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fun payments(MG001: Int, MG002: Int, MG003: Int, MG004: Int):String {
-            val transactionRef = mutableListOf(100, 200, 300, 250)
+        fun payments(MG001: Int, MG002: Int, MG003: Int, MG004: Int): Collection<Any> {
+            return payments(100,200,300,250)}
+
+        fun receiptsTable(R001: Int, R002: Int, R003: Int): Collection<Any> {
+            return receiptsTable(100,200,450)}
 
 
-        fun receiptsTable(R001: Int, R002: Int, R003: Int):Int {
-            val amountsToBePaid = receiptsTable(100,400,350)
+        val transactions = listOf(payments(100,200,300,250))
+        val receipts = listOf(receiptsTable(100,200,450))
+        val joinedList = LinkedList<Any>()
 
-            val result = when (amountsToBePaid) {
-                100 -> MG001
-                200 -> MG002
-                300 -> MG003
-                250 -> MG004
+        joinedList.addAll(payments (100,200,300,250));
+        joinedList.addAll(receiptsTable(100,200,450))
+        print(joinedList)
 
-                else -> { val difference = amountsToBePaid-transactionRef
-                when (difference){
-                    100 -> MG001
-                    200 -> MG002
-                    300 -> MG003
-                    250 -> MG004
+        fun bothLists () :Int{
+            val combinedList = listOf<Int>()
+            var zero = 0
+            val receiptBalance = 0
+            val transactionBalance = 0
+            for(i in payments(100,200,300,250)){
+                for(j in receiptsTable(100,200,450)) {
+                    println("$i,$j")
 
-                    else -> "Not Found"
+        fun difference (){
+            var balance = (receipts[0] + receiptBalance)-(transactions[0]+transactionBalance)
+                if(balance .equals(0) ){
+                    println(receipts)
                 }
-                    }                    }
-            println(result)
-            return receiptsTable(100,400,350)
+                else if(balance > zero){
+                    transactions[0]
+                    balance
+                }
+                else (balance < zero){
+                    receipts [0]
+                    balance
+                }
+            return difference()
+            }
+                    }
+
         }
-            return payments(100, 200, 300, 250)
-        }
-    }
+            return bothLists()
+    }}}
+
+private operator fun Boolean.invoke(value: Any) {
+
 }
 
-private operator fun Int.minus(transactionRef: MutableList<Int>):Int {
-    return Int.MAX_VALUE
+private operator fun <E> List<E>.compareTo(zero: E) :Int{
+    return 0
 }
