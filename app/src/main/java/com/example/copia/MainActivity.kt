@@ -11,10 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         fun payments(MG001: Int, MG002: Int, MG003: Int, MG004: Int): Collection<Any> {
-            return payments(100,200,300,250)}
+            return emptyList()}
+//            return payments(100,200,300,250)}
 
         fun receiptsTable(R001: Int, R002: Int, R003: Int): Collection<Any> {
-            return receiptsTable(100,200,450)}
+            return emptyList()}
+//            return receiptsTable(100,200,450)}
 
 
         val transactions = listOf(payments(100,200,300,250))
